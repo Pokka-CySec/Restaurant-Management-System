@@ -1,9 +1,12 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class App {
     public static Scanner sc = new Scanner(System.in);
+    public static ArrayList<FoodItem> menuList = new ArrayList<>();
+    public static LinkedList<VoucherItem> voucherList = new LinkedList<>();
     public static void main(String[] args) {
         Admin admin = new Admin();
         
@@ -45,7 +48,7 @@ public class App {
             }
 
             if (found) {
-                adminPage();
+                adminPage(admin);
                 break;
             }
             else {
@@ -56,7 +59,7 @@ public class App {
         
     }
 
-    private static void adminPage() {
+    private static void adminPage(Admin admin) {
         while (true) {
            clearConsole();
             System.out.println("1. Add Menu");
@@ -67,8 +70,27 @@ public class App {
             int input = sc.nextInt();
 
             if (input == 1) {
+
+                System.out.println("Enter the menu's ID: ");
+                int id = sc.nextInt();
+                sc.nextLine();
+
+                System.out.println("Enter the menu's name: ");
+                String name = sc.nextLine();
+
+                System.out.println("Enter the menu's price: ");
+                double price = sc.nextDouble();
+
+                FoodItem food = new FoodItem(id, name, price);
+
+                admin.addMenu(food, menuList);
             }
+
             else if (input == 2) {
+                System.out.println("Enter the menu's ID: ");
+                int id = sc.nextInt();
+
+                admin.removeMenu(id, menuList);
             }
             else if (input == 3) { 
             }

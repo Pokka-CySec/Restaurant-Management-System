@@ -64,36 +64,40 @@ public class Admin {
     }
 
     public void addMenu(FoodItem item, ArrayList<FoodItem> menuList) {
+        for (FoodItem obj : menuList) {
+            if (obj.getFoodID() == item.getFoodID()) {
+                System.out.println("This menu already exist");
+                return;
+            }
+        }
         menuList.add(item);
     }
 
     public void removeMenu(int id, ArrayList<FoodItem> menuList) {
 
-        for (FoodItem obj : menuList) {
-            if (obj.getFoodID() == id) {
-                menuList.remove(obj);
+        boolean notFound = false;
+        for (int i = 0; i < menuList.size(); i++) {
+            FoodItem item = menuList.get(i);
+            if (item.getFoodID() == id) {
+                menuList.remove(item);
             }
+            else {
+                notFound = true;
+            }
+        }
+        if (notFound) {
+            System.out.println("Menu does not exist.");
         }
     }
 
     public void addVoucher(VoucherItem item, LinkedList<VoucherItem> voucherList) {
-        int i = 0;
-        
-        if (!voucherList.isEmpty()) {
-            while (voucherList.get(i) != null) {
-                VoucherItem obj = voucherList.get(i);
-                if (obj.getVoucherID() == item.getVoucherID()) {
-                    System.out.println("This voucher already exist!");
-                    return;
-                }
-                i++;
-                if (i > voucherList.size()) {
-                    break;
-                }
+        for (VoucherItem obj : voucherList) {
+            if (obj.getVoucherID() == item.getVoucherID()) {
+                System.out.println("This voucher already exist");
+                return;
             }
         }
-        
-        voucherList.addLast(item);
+        voucherList.addFirst(item);
     }
 
     public void removeVoucher(int id, LinkedList<VoucherItem> voucherList) {
