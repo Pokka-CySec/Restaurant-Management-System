@@ -32,7 +32,7 @@ public class Admin {
     public ArrayList<Admin> ReadAdminFile() {
         ArrayList<Admin> adminList = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\admin.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Data\\admin.txt"))) {
             String line;
             Admin admin = null;
 
