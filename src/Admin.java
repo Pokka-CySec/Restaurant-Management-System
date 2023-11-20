@@ -39,24 +39,30 @@ public class Admin {
             while ((line = br.readLine()) != null) {
                 line = line.trim();
                 
-                if (!line.isEmpty()) {
-                    String[] parts = line.split(":", 2);
+                if (line.isEmpty()) {
+                    continue;
+                }
 
-                    if (parts.length == 2) {
-                        String key = parts[0].trim();
-                        String value = parts[1].trim();
+                String[] parts = line.split(":", 2);
 
-                        if (key.equals("name")) {
-                            admin = new Admin();
-                            admin.setName(value);
-                        } else if (key.equals("adminID") && admin != null) {
-                            admin.setAdminID(value);
-                            adminList.add(admin);
-                        }
-                    }
+                if (parts.length != 2) {
+                    continue;
+                }
+                
+                String key = parts[0].trim();
+                String value = parts[1].trim();
+
+                if (key.equals("name")) {
+                    admin = new Admin();
+                    admin.setName(value);
+                } 
+                else if (key.equals("adminID") && admin != null) {
+                    admin.setAdminID(value);
+                    adminList.add(admin);
                 }
             }
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
 
