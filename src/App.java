@@ -92,7 +92,7 @@ public class App {
 
                 admin.removeMenu(id, menuList);
             }
-            else if (input == 3) { 
+            else if (input == 3) {
             }
             else if (input == 4) {
             }
@@ -105,6 +105,13 @@ public class App {
     }
     
     private static void customerPage() {
+        clearConsole();
+        System.out.println("1. Add Menu");
+        System.out.println("2. Remove Menu");
+        System.out.println("3. Add Voucher");
+        System.out.println("4. Remove Voucher");
+        System.out.println("5. Log Out");
+        int input = sc.nextInt();
     }
 
     public static void clearConsole() {
