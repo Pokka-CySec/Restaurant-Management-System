@@ -1,5 +1,4 @@
 package Menu;
-
 import java.text.DecimalFormat;
 
 public class Food extends MenuComponent {
@@ -17,5 +16,17 @@ public class Food extends MenuComponent {
     @Override
     public void display() {
         System.out.println("    " + foodName + " - RM" + dFormat.format(price));
+    }
+
+    public int getFoodID() {
+        return foodID;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }
