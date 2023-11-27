@@ -1,8 +1,2 @@
-name : Tuan Ahmad Muqri Bin Tuan Mohd Suhaimi
-adminID : 041005
-
-name : Muhammad Hakimi Bin Muhammad Jauhari
-adminID : 041108
-
-name : Akmal Haikal Basha Bin Mustafa Kamal Basha
-adminID : 040205
+141005:letmein
+141015:ucanin
