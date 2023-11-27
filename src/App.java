@@ -4,7 +4,10 @@ import java.util.LinkedList;
 public class App {
 
     static Scanner sc = new Scanner(System.in);
-    static LinkedList<User> users = new LinkedList<>();
+    
+    static FileUser userData = new FileUser("data/user.txt");
+    static LinkedList<User> users = userData.loadUser();
+
     public static void main(String[] args) {
         
         while (true) {
@@ -32,9 +35,9 @@ public class App {
     }
 
     private static void adminAuth() {
-        LinkedList<Admin> admins = null;
+        
         FileAdmin adminData = new FileAdmin("data/admin.txt");
-        admins = adminData.loadAdmin();
+        LinkedList<Admin> admins = adminData.loadAdmin();
 
         while (true) {
             System.out.println();
@@ -90,8 +93,11 @@ public class App {
                 int id = sc.nextInt();
 
                 User user = new User(username, id);
-                admin.addUser(user, users);
+                boolean added = admin.addUser(user, users);
 
+                if (added) {
+                    userData.updateUser(users);
+                }
             }
 
             else if (option == 2) {
@@ -102,7 +108,11 @@ public class App {
                 int id = sc.nextInt();
 
                 User user = new User(username, id);
-                admin.removeUser(user, users);
+                boolean removed = admin.removeUser(user, users);
+
+                if (removed) {
+                    userData.updateUser(users);
+                }
             }
 
             else if (option == 3) {
@@ -118,9 +128,7 @@ public class App {
             }
             
             else if (option == 6) {
-                for (User user : users) {
-                    System.out.println(user.toString());
-                }
+                break;
             }
 
             else {
@@ -131,6 +139,67 @@ public class App {
     }
 
     private static void userAuth() {
+        while (true) {
+            System.out.print("username: ");
+            String username = sc.next();
+    
+            System.out.print("User's ID: ");
+            int id = sc.nextInt();
+    
+            User user = null;
+            boolean found = false;
+    
+            for (int i = 0; i < users.size(); i++) {
+                user = users.get(i);
+                if (username.equals(user.getUserName())) {
+                    if (id == user.getUserID()) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+    
+            if (found) {
+                userSession(user);
+                break;
+            }
+            else {
+                System.out.println("Invalid credentials , please try again.");
+            }
+        }
     }
     
+    private static void userSession(User user) {
+        while (true) {
+            System.out.println();
+            System.out.println("welcome to Admin Page!\n");
+            System.out.println("=============");
+            System.out.println("1. Display product");
+            System.out.println("2. Display Review");
+            System.out.println("3. Add Review");
+            System.out.println("4. Log out");
+            System.out.println("=============");
+            int option = sc.nextInt();
+
+            if (option == 1) {
+                
+            }
+
+            else if (option == 2) {
+                
+            }
+
+            else if (option == 3) {
+                
+            }
+
+            else if (option == 4) {
+                break;
+            }
+
+            else {
+                System.out.println("Invalid input. Try again.");
+            }
+        }
+    }
 }

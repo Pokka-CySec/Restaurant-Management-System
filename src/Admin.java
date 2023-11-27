@@ -17,7 +17,7 @@ public class Admin {
         return password;
     }
 
-    public void addUser(User user, LinkedList<User> users) {
+    public boolean addUser(User user, LinkedList<User> users) {
 
         boolean found = false;
 
@@ -31,13 +31,14 @@ public class Admin {
 
         if (found) {
             System.out.println("User already exist!");
+            return false;
         }
-        else {
-            users.add(user);
-        }
+        
+        users.add(user);
+        return true;
     }
 
-    public void removeUser(User user, LinkedList<User> users) {
+    public boolean removeUser(User user, LinkedList<User> users) {
 
         boolean found = false;
         User temp = null;
@@ -54,10 +55,11 @@ public class Admin {
 
         if (found) {
             users.remove(temp);
+            return true;
         }
-        else {
-            System.out.println("User does not exist!");
-        }
+        
+        System.out.println("User does not exist!");
+        return false;
     }
 
 }
