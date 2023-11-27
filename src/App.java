@@ -35,7 +35,7 @@ public class App {
     }
 
     private static void adminAuth() {
-        
+
         FileAdmin adminData = new FileAdmin("data/admin.txt");
         LinkedList<Admin> admins = adminData.loadAdmin();
 
@@ -64,6 +64,7 @@ public class App {
                 adminSession(admin);
                 break;
             }
+            
             else {
                 System.out.println("Invalid credentials , please try again.");
             }
