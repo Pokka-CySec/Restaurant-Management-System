@@ -1,32 +1,34 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class FileAdmin {
+public class FileProduct {
     private String filePath;
 
-    public FileAdmin(String filePath) {
+    public FileProduct(String filePath) {
         this.filePath = filePath;
     }
 
-    public LinkedList loadAdmin() {
-        LinkedList admins = new LinkedList();
+    public LinkedList<User> loadUser() {
+        LinkedList<User> users = new LinkedList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
                 StringTokenizer token = new StringTokenizer(line, ":");
                 if (token.countTokens() == 2) {
+                    String username = token.nextToken();
                     int id = Integer.parseInt(token.nextToken());
-                    String password = token.nextToken();
-                    Admin admin = new Admin(id, password);
-                    admins.insertAtBack(admin);
+                    User user = new User(username, id);
+                    users.add(user);
                 }
             }
-            return admins;
+            return users;
             
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return admins;
+        return users;
     }
 }

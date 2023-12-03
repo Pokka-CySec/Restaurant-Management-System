@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class Admin {
     private int adminID;
     private String password;
@@ -17,16 +15,19 @@ public class Admin {
         return password;
     }
 
-    public boolean addUser(User user, LinkedList<User> users) {
+    public boolean addUser(User user, LinkedList users) {
 
         boolean found = false;
+        Object data = users.getFirst();
 
-        for (User temp : users) {
+       while (data != null) {
+            User temp = (User) data;
             if (temp.getUserName().equals(user.getUserName())) {
                 if (temp.getUserID() == user.getUserID()) {
                     found = true;
                 }
             }
+            data = users.getNext();
         }
 
         if (found) {
@@ -34,32 +35,33 @@ public class Admin {
             return false;
         }
         
-        users.add(user);
+        users.insertAtBack(user);
         return true;
     }
 
-    public boolean removeUser(User user, LinkedList<User> users) {
+    public boolean removeUser(User user, LinkedList users) {
 
         boolean found = false;
-        User temp = null;
+        Object data = users.getFirst();
 
-        for (int i = 0; i < users.size(); i++) {
-            temp = users.get(i);
+        while (data != null) {
+            User temp = (User) data;
             if (temp.getUserName().equals(user.getUserName())) {
                 if (temp.getUserID() == user.getUserID()) {
                     found = true;
                     break;
                 }
             }
+            data = users.getNext();
         }
 
         if (found) {
-            users.remove(temp);
+            users.remove(data);
             return true;
         }
         
         System.out.println("User does not exist!");
         return false;
     }
-
+    
 }

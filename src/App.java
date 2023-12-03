@@ -1,12 +1,12 @@
 import java.util.Scanner;
-import java.util.LinkedList;
+import java.io.IOException;
 
 public class App {
 
     static Scanner sc = new Scanner(System.in);
     
     static FileUser userData = new FileUser("data/user.txt");
-    static LinkedList<User> users = userData.loadUser();
+    static LinkedList users = userData.loadUser();
 
     public static void main(String[] args) {
         
@@ -37,7 +37,7 @@ public class App {
     private static void adminAuth() {
 
         FileAdmin adminData = new FileAdmin("data/admin.txt");
-        LinkedList<Admin> admins = adminData.loadAdmin();
+        LinkedList admins = adminData.loadAdmin();
 
         while (true) {
             System.out.println();
@@ -49,16 +49,19 @@ public class App {
 
             Admin admin = null;
             boolean found = false;
+            Object data = admins.getFirst();
 
-            for (int i = 0; i < admins.size(); i++) {
-                admin = admins.get(i);
+            while (data != null) {
+                admin = (Admin) data;
                 if (id == admin.getAdminID()) {
                     if (password.equals(admin.getPassword())) {
                         found = true;
                         break;
                     }
                 }
+                data = admins.getNext();
             }
+                
 
             if (found) {
                 adminSession(admin);
@@ -76,14 +79,14 @@ public class App {
         while (true) {
             System.out.println();
             System.out.println("welcome to Admin Page!\n");
-            System.out.println("=============");
+            System.out.println("=====================");
             System.out.println("1. Add User");
             System.out.println("2. Remove User");
             System.out.println("3. Remove Review");
             System.out.println("4. Add Product");
             System.out.println("5. Remove Product");
             System.out.println("6. Log out");
-            System.out.println("=============");
+            System.out.println("=====================");
             int option = sc.nextInt();
 
             if (option == 1) {
@@ -144,14 +147,15 @@ public class App {
             System.out.print("username: ");
             String username = sc.next();
     
-            System.out.print("User's ID: ");
+            System.out.print("user ID: ");
             int id = sc.nextInt();
     
             User user = null;
             boolean found = false;
+            Object data = users.getFirst();
     
-            for (int i = 0; i < users.size(); i++) {
-                user = users.get(i);
+            while (data != null) {
+                user = (User) data;
                 if (username.equals(user.getUserName())) {
                     if (id == user.getUserID()) {
                         found = true;
@@ -173,13 +177,13 @@ public class App {
     private static void userSession(User user) {
         while (true) {
             System.out.println();
-            System.out.println("welcome to Admin Page!\n");
-            System.out.println("=============");
+            System.out.println("welcome to User Page!\n");
+            System.out.println("======================");
             System.out.println("1. Display product");
             System.out.println("2. Display Review");
             System.out.println("3. Add Review");
             System.out.println("4. Log out");
-            System.out.println("=============");
+            System.out.println("======================");
             int option = sc.nextInt();
 
             if (option == 1) {
@@ -203,4 +207,16 @@ public class App {
             }
         }
     }
+
+    private static void clearConsole() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            }
+            else {
+                System.out.print("\033\143");
+            }
+        } catch (IOException | InterruptedException ex) {}
+    }
+
 }

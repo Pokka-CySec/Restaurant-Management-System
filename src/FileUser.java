@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+import java.util.StringTokenizer;
 
 public class FileUser {
     private String filePath;
@@ -8,8 +8,8 @@ public class FileUser {
         this.filePath = filePath;
     }
 
-    public LinkedList<User> loadUser() {
-        LinkedList<User> users = new LinkedList<>();
+    public LinkedList loadUser() {
+        LinkedList users = new LinkedList();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
@@ -19,7 +19,7 @@ public class FileUser {
                     String username = token.nextToken();
                     int id = Integer.parseInt(token.nextToken());
                     User user = new User(username, id);
-                    users.add(user);
+                    users.insertAtBack(user);
                 }
             }
             return users;
@@ -30,11 +30,14 @@ public class FileUser {
         return users;
     }
 
-    public void updateUser(LinkedList<User> users) {
+    public void updateUser(LinkedList users) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
-            for (User user : users) {
+            Object data = users.getFirst();
+            while (data != null) {
+                User user = (User) data;
                 String entry = user.getUserName() + ":" + user.getUserID();
                 writer.println(entry);
+                data = users.getNext();
             }
         } catch (IOException e) {
             System.out.println("Error writing to user file: " + e.getMessage());
