@@ -35,6 +35,7 @@ public class FileProduct {
 
     public void updateProduct(LinkedList products) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+
             Object data = products.getFirst();
             while (data != null) {
                 Product product = (Product) data;
@@ -42,6 +43,7 @@ public class FileProduct {
                 writer.println(entry);
                 data = products.getNext();
             }
+            
         } catch (IOException e) {
             System.out.println("Error writing to user file: " + e.getMessage());
         }
