@@ -53,4 +53,8 @@ public class Product {
         return productAvailability;
     }
 
+    public String toString() {
+        return (this.productID + "," + this.productName + "," + this.productBrand + "," + this.productPrice + "," + this.productAvailability);
+    }
+
 }
