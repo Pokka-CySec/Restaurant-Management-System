@@ -32,6 +32,7 @@ public class FileUser {
 
     public void updateUser(LinkedList users) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+
             Object data = users.getFirst();
             while (data != null) {
                 User user = (User) data;

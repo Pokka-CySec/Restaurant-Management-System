@@ -1,5 +1,5 @@
 import java.util.Scanner;
-// import java.io.IOException;
+import java.io.IOException;
 
 public class App {
 
@@ -152,8 +152,8 @@ public class App {
     
             User user = null;
             boolean found = false;
+
             Object data = users.getFirst();
-    
             while (data != null) {
                 user = (User) data;
                 if (username.equals(user.getUserName())) {
@@ -208,15 +208,15 @@ public class App {
         }
     }
 
-    // private static void clearConsole() {
-    //     try {
-    //         if (System.getProperty("os.name").contains("Windows")) {
-    //             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-    //         }
-    //         else {
-    //             System.out.print("\033\143");
-    //         }
-    //     } catch (IOException | InterruptedException ex) {}
-    // }
+    private static void clearConsole() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            }
+            else {
+                System.out.print("\033\143");
+            }
+        } catch (IOException | InterruptedException ex) {}
+    }
 
 }
