@@ -11,11 +11,13 @@ public class App {
     public static void main(String[] args) {
         
         while (true) {
-            System.out.println("=============");
-            System.out.println("1. Login as Admin");
-            System.out.println("2. Login as User");
-            System.out.println("3. Exit");
-            System.out.println("=============");
+            System.out.println("|=======================|");
+            System.out.println("|         WELCOME       |");
+            System.out.println("|=======================|");
+            System.out.println("|1. Login as Admin      |");
+            System.out.println("|2. Login as User       |");
+            System.out.println("|3. Exit                |");
+            System.out.println("|=======================|");
             int option = sc.nextInt();
 
             if (option == 1) {
