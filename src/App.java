@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 // import java.io.IOException;
 
@@ -6,10 +7,15 @@ public class App
 
     static Scanner sc = new Scanner(System.in);
     
-    static FileUser userData = new FileUser("../data/user.txt");
-    static LinkedList users = userData.loadUser();
+    static FileUser userData = null;
+    static LinkedList users = null;
 
     public static void main(String[] args) {
+        
+        String filePath = "data" + File.separator + "user.txt";
+        userData = new FileUser(filePath);
+        users = userData.loadUser();
+
         String[] items = {".",".",".","M", "E", "G", "A", "H", " ", "H", "O", "L", "D", "I", "N", "G",".",".",".",};
             for (String item : items) 
             {
