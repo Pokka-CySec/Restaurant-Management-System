@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.Scanner;
 // import java.io.IOException;
 
@@ -12,8 +11,7 @@ public class App
 
     public static void main(String[] args) {
 
-        String filePath = "data" + File.separator + "user.txt";
-        userData = new FileUser(filePath);
+        userData = new FileUser("../data/user.txt");
         users = userData.loadUser();
 
         String[] items = {".",".",".","M", "E", "G", "A", "H", " ", "H", "O", "L", "D", "I", "N", "G",".",".",".",};
