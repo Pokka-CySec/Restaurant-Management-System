@@ -10,24 +10,25 @@ public class App
     static LinkedList users = userData.loadUser();
 
     public static void main(String[] args) {
-        // String[] items = {"M", "E", "G", "A", "H", " ", "H", "O", "L", "D", "I", "N", "G"};
-        //     for (String item : items) {
-        //         System.out.print(item);
-                                        
-        //     try 
-        //     {
-        //        Thread.sleep(350); // Delay for 1 second 
-        //     } 
-        //     catch (InterruptedException e) 
-        //     {
-        //         e.printStackTrace();
-        //     }
+        String[] items = {".",".",".","M", "E", "G", "A", "H", " ", "H", "O", "L", "D", "I", "N", "G",".",".",".",};
+            for (String item : items) 
+            {
+                System.out.print(item + " "); // Add a space between items
+
+            try {
+                Thread.sleep(350); // Delay for 350 milliseconds
+            }
+            catch (InterruptedException e) 
+            {
+                e.printStackTrace();
+            }
+        }
         
 
         while (true) 
         {
             
-            System.out.println("==================================================================");
+            System.out.println("\n==================================================================");
             System.out.println("||                                                              ||");
             System.out.println("||    MEGAH HOLDING PRODUCT REVIEW SYSTEM                       ||");
             System.out.println("||                                                              ||");
@@ -61,13 +62,15 @@ public class App
         }
         sc.close();
     }
+    
 
     private static void adminAuth() {
 
         FileAdmin adminData = new FileAdmin("../data/admin.txt");
         LinkedList admins = adminData.loadAdmin();
 
-        while (true) {
+        while (true) 
+        {
             System.out.println();
             System.out.println("Enter your ID: ");
             int id = sc.nextInt();
@@ -81,7 +84,8 @@ public class App
 
             while (data != null) {
                 admin = (Admin) data;
-                if (id == admin.getAdminID()) {
+                if (id == admin.getAdminID()) 
+                {
                     if (password.equals(admin.getPassword())) {
                         found = true;
                         break;
@@ -91,20 +95,24 @@ public class App
             }
                 
 
-            if (found) {
+            if (found) 
+            {
                 adminSession(admin);
                 break;
             }
             
-            else {
+            else 
+            {
                 System.out.println("Invalid credentials , please try again.");
             }
         }
 
     }
 
-    private static void adminSession(Admin admin) {
-        while (true) {
+    private static void adminSession(Admin admin) 
+    {
+        while (true) 
+        {
             System.out.println();
             System.out.println("==============================");
             System.out.println("|   welcome to Admin Page!   |\n");
@@ -118,7 +126,8 @@ public class App
             System.out.println("==============================");
             int option = sc.nextInt();
 
-            if (option == 1) {
+            if (option == 1) 
+            {
                 System.out.print("Register username: ");
                 String username = sc.next();
 
@@ -128,12 +137,14 @@ public class App
                 User user = new User(username, id);
                 boolean added = admin.addUser(user, users);
 
-                if (added) {
+                if (added) 
+                {
                     userData.updateUser(users);
                 }
             }
 
-            else if (option == 2) {
+            else if (option == 2) 
+            {
                 System.out.print("Enter username: ");
                 String username = sc.next();
 
@@ -143,36 +154,44 @@ public class App
                 User user = new User(username, id);
                 boolean removed = admin.removeUser(user, users);
 
-                if (removed) {
+                if (removed) 
+                {
                     userData.updateUser(users);
                 }
             }
 
-            else if (option == 3) {
+            else if (option == 3) 
+            {
                 
             }
 
-            else if (option == 4) {
+            else if (option == 4) 
+            {
                 
             }
 
-            else if (option == 5) {
+            else if (option == 5) 
+            {
                 
             }
             
-            else if (option == 6) {
+            else if (option == 6) 
+            {
                 break;
             }
 
-            else {
+            else 
+            {
                 System.out.println("Invalid input. Please enter correctly.");
             }
         }
         
     }
 
-    private static void userAuth() {
-        while (true) {
+    private static void userAuth() 
+    {
+        while (true) 
+        {
             System.out.print("Enter username: ");
             String username = sc.next();
     
@@ -183,28 +202,35 @@ public class App
             boolean found = false;
 
             Object data = users.getFirst();
-            while (data != null) {
+            while (data != null) 
+            {
                 user = (User) data;
-                if (username.equals(user.getUserName())) {
-                    if (id == user.getUserID()) {
+                if (username.equals(user.getUserName())) 
+                {
+                    if (id == user.getUserID()) 
+                    {
                         found = true;
                         break;
                     }
                 }
             }
     
-            if (found) {
+            if (found) 
+            {
                 userSession(user);
                 break;
             }
-            else {
+            else 
+            {
                 System.out.println("Invalid credentials , please try again.");
             }
         }
     }
     
-    private static void userSession(User user) {
-        while (true) {
+    private static void userSession(User user) 
+    {
+        while (true) 
+        {
             System.out.println();
             System.out.println("=====================================");
             System.out.println("||      Welcome to User Page!      ||"); 
@@ -216,23 +242,28 @@ public class App
             System.out.println("=====================================");
             int option = sc.nextInt();
 
-            if (option == 1) {
+            if (option == 1) 
+            {
                 
             }
 
-            else if (option == 2) {
+            else if (option == 2) 
+            {
                 
             }
 
-            else if (option == 3) {
+            else if (option == 3) 
+            {
                 
             }
 
-            else if (option == 4) {
+            else if (option == 4) 
+            {
                 break;
             }
 
-            else {
+            else 
+            {
                 System.out.println("Invalid input. Please try again.");
             }
         }
