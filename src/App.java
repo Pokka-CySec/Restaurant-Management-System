@@ -22,7 +22,7 @@ public class App
                 System.out.print(item + " "); // Add a space between items
 
                 try {
-                    Thread.sleep(350); // Delay for 350 milliseconds
+                    Thread.sleep(250); // Delay for 250 milliseconds
                 }
                 catch (InterruptedException e) 
                 {
