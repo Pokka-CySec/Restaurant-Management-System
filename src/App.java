@@ -1,7 +1,8 @@
 import java.util.Scanner;
 // import java.io.IOException;
 
-public class App {
+public class App 
+{
 
     static Scanner sc = new Scanner(System.in);
     
@@ -9,15 +10,40 @@ public class App {
     static LinkedList users = userData.loadUser();
 
     public static void main(String[] args) {
+        // String[] items = {"M", "E", "G", "A", "H", " ", "H", "O", "L", "D", "I", "N", "G"};
+        //     for (String item : items) {
+        //         System.out.print(item);
+                                        
+        //     try 
+        //     {
+        //        Thread.sleep(350); // Delay for 1 second 
+        //     } 
+        //     catch (InterruptedException e) 
+        //     {
+        //         e.printStackTrace();
+        //     }
         
-        while (true) {
-            System.out.println("|=======================|");
-            System.out.println("|         WELCOME       |");
-            System.out.println("|=======================|");
-            System.out.println("|1. Login as Admin      |");
-            System.out.println("|2. Login as User       |");
-            System.out.println("|3. Exit                |");
-            System.out.println("|=======================|");
+
+        while (true) 
+        {
+            
+            System.out.println("==================================================================");
+            System.out.println("||                                                              ||");
+            System.out.println("||    MEGAH HOLDING PRODUCT REVIEW SYSTEM                       ||");
+            System.out.println("||                                                              ||");
+            System.out.println("||    Search every product's or review based on your desire!!!  ||");
+            System.out.println("||                                                              ||");
+            System.out.println("||              ==================================              ||");
+            System.out.println("||              |             WELCOME            |              ||");
+            System.out.println("||              |================================|              ||");
+            System.out.println("||              | 1.| Login as Admin             |              ||");
+            System.out.println("||              | 2.| Login as User              |              ||");
+            System.out.println("||              | 3.| Exit                       |              ||");
+            System.out.println("||              ==================================              ||");
+            System.out.println("||                                                              ||");
+            System.out.println("==================================================================");
+            
+            System.out.println("\nEnter number (1/2/3) according your category: ");
             int option = sc.nextInt();
 
             if (option == 1) {
@@ -46,7 +72,7 @@ public class App {
             System.out.println("Enter your ID: ");
             int id = sc.nextInt();
 
-            System.out.println("Enter your password:");
+            System.out.println("Enter your password: ");
             String password = sc.next();
 
             Admin admin = null;
@@ -80,15 +106,16 @@ public class App {
     private static void adminSession(Admin admin) {
         while (true) {
             System.out.println();
-            System.out.println("welcome to Admin Page!\n");
-            System.out.println("=====================");
-            System.out.println("1. Add User");
-            System.out.println("2. Remove User");
-            System.out.println("3. Remove Review");
-            System.out.println("4. Add Product");
-            System.out.println("5. Remove Product");
-            System.out.println("6. Log out");
-            System.out.println("=====================");
+            System.out.println("==============================");
+            System.out.println("|   welcome to Admin Page!   |\n");
+            System.out.println("|============================|");
+            System.out.println("| 1.| Add User               |");
+            System.out.println("| 2.| Remove User            |");
+            System.out.println("| 3.| Remove Review          |");
+            System.out.println("| 4.| Add Product            |");
+            System.out.println("| 5.| Remove Product         |");
+            System.out.println("| 6.| Log out                |");
+            System.out.println("==============================");
             int option = sc.nextInt();
 
             if (option == 1) {
@@ -107,10 +134,10 @@ public class App {
             }
 
             else if (option == 2) {
-                System.out.print("username: ");
+                System.out.print("Enter username: ");
                 String username = sc.next();
 
-                System.out.print("User's ID: ");
+                System.out.print("Enter user's ID: ");
                 int id = sc.nextInt();
 
                 User user = new User(username, id);
@@ -138,7 +165,7 @@ public class App {
             }
 
             else {
-                System.out.println("Invalid input. Try again.");
+                System.out.println("Invalid input. Please enter correctly.");
             }
         }
         
@@ -146,10 +173,10 @@ public class App {
 
     private static void userAuth() {
         while (true) {
-            System.out.print("username: ");
+            System.out.print("Enter username: ");
             String username = sc.next();
     
-            System.out.print("user ID: ");
+            System.out.print("Enter user ID: ");
             int id = sc.nextInt();
     
             User user = null;
@@ -179,13 +206,14 @@ public class App {
     private static void userSession(User user) {
         while (true) {
             System.out.println();
-            System.out.println("welcome to User Page!\n");
-            System.out.println("======================");
-            System.out.println("1. Display product");
-            System.out.println("2. Display Review");
-            System.out.println("3. Add Review");
-            System.out.println("4. Log out");
-            System.out.println("======================");
+            System.out.println("=====================================");
+            System.out.println("||      Welcome to User Page!      ||"); 
+            System.out.println("||=================================||");
+            System.out.println("|| 1. | Display product            ||");
+            System.out.println("|| 2. | Display Review             ||");
+            System.out.println("|| 3. | Add Review                 ||");
+            System.out.println("|| 4. | Log out                    ||");
+            System.out.println("=====================================");
             int option = sc.nextInt();
 
             if (option == 1) {
@@ -205,10 +233,11 @@ public class App {
             }
 
             else {
-                System.out.println("Invalid input. Try again.");
+                System.out.println("Invalid input. Please try again.");
             }
         }
     }
+    
 
     /* private static void clearConsole() {
         try {

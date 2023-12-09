@@ -1,0 +1,11 @@
+ System.out.println();
+            System.out.println("==============================");
+            System.out.println("|   welcome to Admin Page!   |\n");
+            System.out.println("|=============================");
+            System.out.println("| 1.| Add User               |");
+            System.out.println("| 2.| Remove User            |");
+            System.out.println("| 3.| Remove Review          |");
+            System.out.println("| 4.| Add Product            |");
+            System.out.println("| 5.| Remove Product         |");
+            System.out.println("| 6.| Log out                |");
+            System.out.println("==============================");
