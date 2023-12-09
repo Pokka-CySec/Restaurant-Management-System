@@ -11,7 +11,7 @@ public class App
     static LinkedList users = null;
 
     public static void main(String[] args) {
-        
+
         String filePath = "data" + File.separator + "user.txt";
         userData = new FileUser(filePath);
         users = userData.loadUser();
@@ -21,14 +21,14 @@ public class App
             {
                 System.out.print(item + " "); // Add a space between items
 
-            try {
-                Thread.sleep(350); // Delay for 350 milliseconds
+                try {
+                    Thread.sleep(350); // Delay for 350 milliseconds
+                }
+                catch (InterruptedException e) 
+                {
+                    e.printStackTrace();
+                }
             }
-            catch (InterruptedException e) 
-            {
-                e.printStackTrace();
-            }
-        }
         
 
         while (true) 
