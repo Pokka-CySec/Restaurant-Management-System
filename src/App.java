@@ -108,7 +108,7 @@ public class App
             System.out.println();
             System.out.println("==============================");
             System.out.println("|   welcome to Admin Page!   |\n");
-            System.out.println("|=============================");
+            System.out.println("|============================|");
             System.out.println("| 1.| Add User               |");
             System.out.println("| 2.| Remove User            |");
             System.out.println("| 3.| Remove Review          |");
@@ -137,7 +137,7 @@ public class App
                 System.out.print("Enter username: ");
                 String username = sc.next();
 
-                System.out.print("Enter uUser's ID: ");
+                System.out.print("Enter user's ID: ");
                 int id = sc.nextInt();
 
                 User user = new User(username, id);
