@@ -6,7 +6,7 @@ public class App
 
     static Scanner sc = new Scanner(System.in);
     
-    static FileUser userData = new FileUser("data/user.txt");
+    static FileUser userData = new FileUser("./data/user.txt");
     static LinkedList users = userData.loadUser();
 
     public static void main(String[] args) {
@@ -64,7 +64,7 @@ public class App
 
     private static void adminAuth() {
 
-        FileAdmin adminData = new FileAdmin("data/admin.txt");
+        FileAdmin adminData = new FileAdmin("./data/admin.txt");
         LinkedList admins = adminData.loadAdmin();
 
         while (true) {
