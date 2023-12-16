@@ -113,6 +113,45 @@ public class App
 
     }
 
+    private static void userAuth() 
+    {
+        while (true) 
+        {
+            System.out.print("Enter username: ");
+            String username = sc.next();
+    
+            System.out.print("Enter user ID: ");
+            int id = sc.nextInt();
+    
+            User user = null;
+            boolean found = false;
+
+            Object data = users.getFirst();
+            while (data != null) 
+            {
+                user = (User) data;
+                if (username.equals(user.getUserName())) 
+                {
+                    if (id == user.getUserID()) 
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+    
+            if (found) 
+            {
+                userSession(user);
+                break;
+            }
+            else 
+            {
+                System.out.println("Invalid credentials , please try again.");
+            }
+        }
+    }
+
     private static void adminSession(Admin admin) 
     {
         while (true) 
@@ -190,45 +229,6 @@ public class App
             }
         }
         
-    }
-
-    private static void userAuth() 
-    {
-        while (true) 
-        {
-            System.out.print("Enter username: ");
-            String username = sc.next();
-    
-            System.out.print("Enter user ID: ");
-            int id = sc.nextInt();
-    
-            User user = null;
-            boolean found = false;
-
-            Object data = users.getFirst();
-            while (data != null) 
-            {
-                user = (User) data;
-                if (username.equals(user.getUserName())) 
-                {
-                    if (id == user.getUserID()) 
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-    
-            if (found) 
-            {
-                userSession(user);
-                break;
-            }
-            else 
-            {
-                System.out.println("Invalid credentials , please try again.");
-            }
-        }
     }
     
     private static void userSession(User user) 
