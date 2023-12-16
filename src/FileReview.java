@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 public class FileReview {
@@ -33,5 +36,21 @@ public class FileReview {
             e.printStackTrace();
         }
         return reviews;
+    }
+
+    public void updateProduct(Queue reviews) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+
+            Object data = reviews.getFirst();
+            while (data != null) {
+                Product product = (Product) data;
+                String entry = product.toString();
+                writer.println(entry);
+                data = reviews.getNext();
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Error writing to user file: " + e.getMessage());
+        }
     }
 }
