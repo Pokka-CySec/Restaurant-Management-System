@@ -20,13 +20,13 @@ public class FileReview {
             while ((line = reader.readLine()) != null) {
                 StringTokenizer token = new StringTokenizer(line, ",");
                 if (token.countTokens() == 5) {
-                    Product product = (Product) token.nextElement();
+                    String name = token.nextToken();
                     String title = token.nextToken();
                     String type = token.nextToken();
                     String description = token.nextToken();
                     int rating = Integer.parseInt(token.nextToken());
 
-                    Review review = new Review(product, title, type, description, rating);
+                    Review review = new Review(name, title, type, description, rating);
                     reviews.enqueue(review);
                 }
             }

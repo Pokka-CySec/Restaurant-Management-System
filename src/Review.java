@@ -1,20 +1,20 @@
 public class Review {
-    private Product product;
+    private String productName;
     private String reviewTitle;
     private String reviewType;
     private String reviewDescription;
     private int rating;
 
-    public Review(Product product, String title, String type, String description, int rate) {
-        this.product = product;
+    public Review(String productName, String title, String type, String description, int rate) {
+        this.productName = productName;
         this.reviewTitle = title;
         this.reviewType = type;
         this.reviewDescription = description;
         this.rating = rate;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(String productName) {
+        this.productName = productName;
     }
 
     public void setReviewTitle(String reviewTitle) {
@@ -33,8 +33,8 @@ public class Review {
         this.rating = rating;
     }
     
-    public Product getProduct() {
-        return product;
+    public String getProductName() {
+        return productName;
     }
 
     public String getReviewTitle() {
